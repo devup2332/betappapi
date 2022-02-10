@@ -3,10 +3,13 @@ version: "3.9"
 services:
   api:
     container_name: api
+    env_file: ./.env
     build:
       context: ./
       dockerfile: dockerfile.dev
     command: npm run dev
+    depends_on:
+      - db
     ports:
       - "${PORT}:${PORT}"
     volumes:
@@ -15,7 +18,7 @@ services:
     networks:
       - api-net
 
-  mysqql:
+  db:
     image: mysql
     container_name: mysql
     environment:
