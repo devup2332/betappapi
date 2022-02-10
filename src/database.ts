@@ -1,6 +1,5 @@
 import mysql2 from "mysql2";
 import { environments } from "./environemts";
-console.log(environments.DB);
 
 const pool = mysql2.createPool({
   host: environments.DB.HOST,
