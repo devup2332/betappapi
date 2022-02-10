@@ -1,0 +1,31 @@
+version: "3.9"
+
+services:
+  api:
+    container_name: api
+    build:
+      context: ./
+      dockerfile: dockerfile.dev
+    command: npm run dev
+    ports:
+      - "${PORT}:${PORT}"
+    volumes:
+      - "./:/api"
+      - "/usr/src/api/node_modules"
+    networks:
+      - api-net
+
+  mysqql:
+    image: mysql
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    networks:
+      - api-net
+
+networks:
+  api-net:
+    driver: bridge
