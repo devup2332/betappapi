@@ -6,7 +6,7 @@ CREATE TABLE users(
   email VARCHAR(300) NOT NULL,
   phone VARCHAR(300) NOT NULL,
   role VARCHAR(20) NOT NULL DEFAULT 'user',
-  CONSTRAINT chk_role CHECK (role in ('admin','user'))
+  CONSTRAINT chk_role CHECK (role in ('admin','superadmin','user'))
 );
 
 ALTER TABLE users
