@@ -2,8 +2,6 @@ FROM node:16.13.2
 
 WORKDIR /usr/betapp/api/
 
-RUN npm i -g yarn
-
 COPY package.json /usr/betapp/api/ 
 COPY yarn.lock /usr/betapp/api/
 

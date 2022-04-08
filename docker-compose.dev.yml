@@ -13,14 +13,14 @@ services:
     ports:
       - "${PORT}:${PORT}"
     volumes:
-      - "./:/usr/betapp/api"
+      - "./:/usr/betapp/api/"
       - "./node_modules:/usr/betapp/api/node_modules"
     networks:
       - api-net
 
   db:
     image: mysql
-    container_name: mysql
+    container_name: db_betapp
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_USER: ${MYSQL_USER}
