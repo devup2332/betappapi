@@ -6,6 +6,12 @@ import User, { IUser } from "../../models/user.model";
 export const SingUpController = async (req: Request, res: Response) => {
   try {
     const { username, email, password, phone, role } = req.body;
+    if(!username || !email || !password || !phone || !role) {
+      return res.status(200).json({
+        status: 0,
+        message: "Please enter a complete profile",
+      });
+    }
     const r = (await DB.promisePool.query("SELECT * FROM users WHERE role=?", ["superadmin"])) as any;
     const superadmin = r[0][0] as User;
     if (superadmin) {
