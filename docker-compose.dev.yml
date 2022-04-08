@@ -2,7 +2,7 @@ version: "3.9"
 
 services:
   api:
-    container_name: api
+    container_name: api_betapp 
     env_file: ./.env
     build:
       context: ./
@@ -13,8 +13,8 @@ services:
     ports:
       - "${PORT}:${PORT}"
     volumes:
-      - "./:/api"
-      - "/api/node_modules"
+      - "./:/usr/betapp/api"
+      - "./node_modules:/usr/betapp/api/node_modules"
     networks:
       - api-net
 

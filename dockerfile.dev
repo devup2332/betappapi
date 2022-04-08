@@ -1,9 +1,12 @@
 FROM node:16.13.2
 
-WORKDIR /api/
+WORKDIR /usr/betapp/api/
 
-COPY package*.json /api/
+RUN npm i -g yarn
 
-RUN npm install
+COPY package.json /usr/betapp/api/ 
+COPY yarn.lock /usr/betapp/api/
 
-COPY . /api/
+RUN yarn install
+
+COPY . /usr/betapp/api/
