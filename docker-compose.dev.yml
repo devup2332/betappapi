@@ -7,7 +7,7 @@ services:
     build:
       context: ./
       dockerfile: dockerfile.dev
-    command: npm run dev
+    command: yarn dev
     depends_on:
       - db
     ports:
