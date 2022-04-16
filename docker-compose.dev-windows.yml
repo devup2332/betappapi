@@ -1,25 +1,11 @@
 version: "3.9"
 
 services:
-  api:
-    container_name: api_betapp 
-    env_file: ./.env
-    build:
-      context: ./
-      dockerfile: dockerfile.dev
-    command: yarn dev
-    depends_on:
-      - db
-    ports:
-      - "${PORT}:${PORT}"
-    volumes:
-      - "./:/usr/betapp/api/"
-    networks:
-      - api-net
-
   db:
     image: mysql
     container_name: db_betapp
+    ports:
+      - "3306:3306"
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_USER: ${MYSQL_USER}
